@@ -4,7 +4,7 @@ gitlab-runner unregister --all-runners
 
 gitlab-runner register \
   --non-interactive \
-  --url "$COORDINATOR_URL" \
+  --url "$GITLAB_INSTANCE_URL" \
   --registration-token "$REGISTRATION_TOKEN" \
   --executor "docker" \
   --docker-image alpine:latest \
