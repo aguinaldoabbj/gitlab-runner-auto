@@ -1,10 +1,12 @@
 # gitlab-runner
 
+Forked and improved from @abelfodil/gitlab-runner.
+
 ## Configure
 
 - Copy `.env.example` to `.env`.
 
-- Change `COORDINATOR_URL` variable if self-hosting Gitlab.
+- Change `GITLAB_INSTANCE_URL` according to your needs
 
 - Add registration token to `REGISTRATION_TOKEN`.
 
