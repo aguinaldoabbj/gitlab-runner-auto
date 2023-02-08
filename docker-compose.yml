@@ -46,8 +46,8 @@ services:
       - bash
       - -c
       - /opt/scripts/register.sh && /opt/scripts/run.sh
-    env_file:
-     - .env
+    # env_file:
+    #  - .env
 
 networks:
   gitlab-network:
