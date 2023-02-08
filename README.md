@@ -1,5 +1,7 @@
 # gitlab-runner
 
+Auto-registering gitlab-runner. You just need to supply the registration token and runners are ready to use.
+
 Forked and improved from @abelfodil/gitlab-runner.
 
 ## Configure
