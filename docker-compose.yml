@@ -4,13 +4,12 @@ services:
   runner1:
     hostname: runner1
     image: gitlab/gitlab-runner:alpine
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
     volumes:
-      - type: bind
-        source: ${GITLAB_RUNNERS_HOME}/runner1/config
-        target: /etc/gitlab-runner
-        bind:
-          create_host_path: true
+      - ${GITLAB_RUNNERS_HOME}/runner1:/etc/gitlab-runner 
       - /var/run/docker.sock:/var/run/docker.sock
       - ./scripts:/opt/scripts:ro
     networks:
@@ -28,13 +27,12 @@ services:
   runner2:
     hostname: runner2
     image: gitlab/gitlab-runner:alpine
-    restart: always
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
     volumes:
-      - type: bind
-        source: ${GITLAB_RUNNERS_HOME}/runner2/config
-        target: /etc/gitlab-runner
-        bind:
-          create_host_path: true
+      - ${GITLAB_RUNNERS_HOME}/runner2:/etc/gitlab-runner 
       - /var/run/docker.sock:/var/run/docker.sock
       - ./scripts:/opt/scripts:ro
     networks:
@@ -46,8 +44,8 @@ services:
       - bash
       - -c
       - /opt/scripts/register.sh && /opt/scripts/run.sh
-    # env_file:
-    #  - .env
+    env_file:
+     - .env
 
 networks:
   gitlab-network:
